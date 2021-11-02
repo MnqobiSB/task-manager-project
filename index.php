@@ -80,38 +80,35 @@
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
-          4
         </form>
       </div>
       <div class="col-md-9">
-        Column-9
+        <?php
+          // if($_GET['msg'] == 'listdeleted'){
+          //   echo '<p class="msg">Your list has been deleted</p>';
+          // }
+          if($_GET['page'] == 'welcome' || $_GET['page'] == ""){
+            include 'pages/welcome.php';
+          } elseif($_GET['page'] == 'list'){
+            include 'pages/list.php';
+          } elseif($_GET['page'] == 'task'){
+            include 'pages/task.php';
+          } elseif($_GET['page'] == 'new_task'){
+            include 'pages/new_task.php';
+          } elseif($_GET['page'] == 'new_list'){
+            include 'pages/new_list.php';
+          } elseif($_GET['page'] == 'edit_task'){
+            include 'pages/edit_task.php';
+          } elseif($_GET['page'] == 'edit_list'){
+            include 'pages/edit_list.php';
+          } elseif($_GET['page'] == 'register'){
+            include 'pages/register.php';
+          } elseif($_GET['page'] == 'delete_list'){
+            include 'pages/delete_list.php';
+          }
+        ?>
       </div>
     </div>
-
-    <?php
-    // if($_GET['msg'] == 'listdeleted'){
-    //   echo '<p class="msg">Your list has been deleted</p>';
-    // }
-    if($_GET['page'] == 'welcome' || $_GET['page'] == ""){
-      include 'pages/welcome.php';
-    } elseif($_GET['page'] == 'list'){
-      include 'pages/list.php';
-    } elseif($_GET['page'] == 'task'){
-      include 'pages/task.php';
-    } elseif($_GET['page'] == 'new_task'){
-      include 'pages/new_task.php';
-    } elseif($_GET['page'] == 'new_list'){
-      include 'pages/new_list.php';
-    } elseif($_GET['page'] == 'edit_task'){
-      include 'pages/edit_task.php';
-    } elseif($_GET['page'] == 'edit_list'){
-      include 'pages/edit_list.php';
-    } elseif($_GET['page'] == 'register'){
-      include 'pages/register.php';
-    } elseif($_GET['page'] == 'delete_list'){
-      include 'pages/delete_list.php';
-    }
-  ?>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
