@@ -3,7 +3,8 @@
   session_start();
   //Config File
   require 'config.php';
-
+  //Database Class
+  require 'classes/database.php';
 ?>
 
 <!DOCTYPE html>
