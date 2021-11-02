@@ -5,6 +5,47 @@
   require 'config.php';
   //Database Class
   require 'classes/database.php';
+
+  $database = new Database;
+
+  //Set Timezone
+  date_default_timezone_set('Africa/Harare');
+?>
+
+<?php
+  //LOG IN
+  if($_POST['login_submit']){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $enc_password = md5($password);
+    //Query
+    $database->query("SELECT * FROM users WHERE username = :username AND password = :password");
+    $database->bind(':username',$username);
+    $database->bind(':password',$enc_password);
+    $rows = $database->resultset();
+    $count = count($rows);
+    if($count > 0){
+      session_start();
+      //Assign session variables
+      $_SESSION['username']   = $username;
+      $_SESSION['password']   = $password;
+      $_SESSION['logged_in']  = 1;
+    } else {
+      $login_msg[] = 'Sorry, username or password is incorrect';
+    }
+  }
+
+
+  //LOG OUT
+  if($_POST['logout_submit']){
+    if(isset($_SESSION['username']))
+        unset($_SESSION['username']);
+    if(isset($_SESSION['password']))
+        unset($_SESSION['password']);
+    if(isset($_SESSION['logged_in']))
+        unset($_SESSION['logged_in']);
+    session_destroy();
+  }
 ?>
 
 <!DOCTYPE html>
@@ -33,20 +74,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <p class="navbar-text pull-right">
-          <!-- <?php if($_SESSION['logged_in']) : ?>
-          Hello, <?php echo $_SESSION['username']; ?>
-          <?php endif; ?> -->
-        </p>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <?php if($_SESSION['logged_in']) : ?>
+              Hello, <?php echo $_SESSION['username']; ?>
+              <?php endif; ?>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page"
               href="http://localhost/2.LearnPHPandMySQLDevelopmentFromScratch/project/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?page=register">Register</a>
-          </li>
-          <!-- <?php if(!$_SESSION['logged_in']) : ?>
+          <?php if(!$_SESSION['logged_in']) : ?>
           <li class="nav-item">
             <a class="nav-link" href="index.php?page=register">Register</a>
           </li>
@@ -57,7 +97,7 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php?page=new_task">Add Task</a>
           </li>
-          <?php endif; ?> -->
+          <?php endif; ?>
         </ul>
       </div>
     </div>
@@ -68,22 +108,30 @@
     <div class="row">
       <div class="col-md-3">
         <h2>Login Form</h2>
-        <!-- <form>
+        <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+          <?php if(!$_SESSION['logged_in']) : ?>
+          <?php foreach($login_msg as $msg) : ?>
+          <?php echo $msg.'<br />'; ?>
+          <?php endforeach; ?>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="username">
           </div>
+
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password">
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+          <div class="mb-3">
+            <input type="submit" class="btn btn-success" value="Sign In" name="login_submit" />
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form> -->
+          <?php else : ?>
+          <div class="mb-3">
+            <input type="submit" class="btn btn-danger" value="Sign Out" name="logout_submit" />
+          </div>
+          <?php endif; ?>
+        </form>
       </div>
 
       <div class="col-md-9">

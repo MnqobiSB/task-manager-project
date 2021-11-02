@@ -82,7 +82,7 @@
   }
 ?>
 
-<h3>Register</h3>
+<h2>Register</h2>
 <p>Please use the form below to register at our site</p>
 
 <?php
@@ -133,7 +133,6 @@
   </div>
 
   <div class="mb-3">
-    <input type="submit" class="btn btn-primary" value="Register" name="register_submit" />
-
+    <input type="submit" class="btn btn-primary" value="Sign Up" name="register_submit" />
   </div>
 </form>
