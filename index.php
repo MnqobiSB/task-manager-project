@@ -34,16 +34,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <p class="navbar-text pull-right">
-          <?php if($_SESSION['logged_in']) : ?>
+          <!-- <?php if($_SESSION['logged_in']) : ?>
           Hello, <?php echo $_SESSION['username']; ?>
-          <?php endif; ?>
+          <?php endif; ?> -->
         </p>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page"
               href="http://localhost/2.LearnPHPandMySQLDevelopmentFromScratch/project/">Home</a>
           </li>
-          <?php if(!$_SESSION['logged_in']) : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?page=register">Register</a>
+          </li>
+          <!-- <?php if(!$_SESSION['logged_in']) : ?>
           <li class="nav-item">
             <a class="nav-link" href="index.php?page=register">Register</a>
           </li>
@@ -54,7 +57,7 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php?page=new_task">Add Task</a>
           </li>
-          <?php endif; ?>
+          <?php endif; ?> -->
         </ul>
       </div>
     </div>
@@ -65,8 +68,7 @@
     <div class="row">
       <div class="col-md-3">
         <h2>Login Form</h2>
-
-        <form>
+        <!-- <form>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -81,8 +83,9 @@
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </form> -->
       </div>
+
       <div class="col-md-9">
         <?php
           // if($_GET['msg'] == 'listdeleted'){
