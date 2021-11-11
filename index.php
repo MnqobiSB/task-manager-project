@@ -84,7 +84,7 @@
           <input type="submit" class="btn btn-danger" value="Sign Out" name="logout_submit" />
         </form>
         <?php else : ?>
-        <a href="index.php?page=register" class="btn btn-warning me-2" tabindex="-1" role="button">Sign Up</a>
+        <a href="index.php?page=register" class="btn btn-warning me-2" tabindex="-1" role="button">Register</a>
         <a href="index.php?page=login" class="btn btn-primary" tabindex="-1" role="button">Sign In</a>
         <?php endif; ?>
       </div>
@@ -114,7 +114,7 @@
         } elseif($_GET['page'] == 'edit_list'){
           echo '';
         } elseif($_GET['page'] == 'register'){
-          echo '';
+          echo '<h1 class="text-center">Register Now</h1>';
         } elseif($_GET['page'] == 'delete_list'){
           echo '';
         }
@@ -141,7 +141,7 @@
           } elseif($_GET['page'] == 'edit_list'){
             echo '';
           } elseif($_GET['page'] == 'register'){
-            echo '';
+            echo 'img/login.svg';
           } elseif($_GET['page'] == 'delete_list'){
             echo '';
           }
