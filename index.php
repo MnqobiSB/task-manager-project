@@ -104,15 +104,15 @@
         } elseif($_GET['page'] == 'login'){
           echo '<h1 class="text-center">Sign In</h1>';
         } elseif($_GET['page'] == 'task'){
-          echo '';
+          echo '<h1 class="text-center">Your Tasks</h1>';
         } elseif($_GET['page'] == 'new_task'){
-          echo '';
+          echo '<h1 class="text-center">Add New Task</h1>';
         } elseif($_GET['page'] == 'new_list'){
-          echo '';
+          echo '<h1 class="text-center">Add New List</h1>';
         } elseif($_GET['page'] == 'edit_task'){
-          echo '';
+          echo '<h1 class="text-center">Edit Task</h1>';
         } elseif($_GET['page'] == 'edit_list'){
-          echo '';
+          echo '<h1 class="text-center">Edit List</h1>';
         } elseif($_GET['page'] == 'register'){
           echo '<h1 class="text-center">Register Now</h1>';
         } elseif($_GET['page'] == 'delete_list'){
@@ -133,9 +133,9 @@
           } elseif($_GET['page'] == 'task'){
             echo '';
           } elseif($_GET['page'] == 'new_task'){
-            echo '';
+            echo 'img/add_tasks.svg';
           } elseif($_GET['page'] == 'new_list'){
-            echo '';
+            echo 'img/add_tasks.svg';
           } elseif($_GET['page'] == 'edit_task'){
             echo '';
           } elseif($_GET['page'] == 'edit_list'){

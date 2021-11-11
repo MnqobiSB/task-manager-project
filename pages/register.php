@@ -81,7 +81,7 @@
   }
 ?>
 
-<p>Register now to start using the Task Manager app.</p>
+<p class="lead">Register now to start using the Task Manager app.</p>
 
 <?php
   if(!empty($errors)){

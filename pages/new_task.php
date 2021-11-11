@@ -35,25 +35,37 @@
 ?>
 
 
-<h1>Add a Task</h1>
+<p class="lead">Organise your day by adding your tasks</p>
+
 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-  <label>Task Name</label>
-  <input type="text" name="task_name" /><br />
+  <div class="mb-3">
+    <label for="task_name" class="form-label">Task Name</label>
+    <input type="text" name="task_name" class="form-control" id="task_name"
+      value="<?php if($_POST['task_name'])echo $_POST['task_name'] ?>" />
+  </div>
   <?php if($_GET['listid']) : ?>
   <input type="hidden" name="list_id" value="<?php echo $_GET['listid']; ?>" />
   <?php else : ?>
-  <label>List</label>
-  <select name="list_id">
-    <option value="0">--Select List--</option>
-    <?php foreach($rows as $list) : ?>
-    <option value="<?php echo $list['id']; ?>"><?php echo $list['list_name']; ?></option>
-    <?php endforeach; ?>
-  </select>
+  <div class="mb-3">
+    <label for="list_id" class="form-label">List</label>
+    <select name="list_id" class="form-select" id="list_id">
+      <option value="0" disabled selected>--Select List--</option>
+      <?php foreach($rows as $list) : ?>
+      <option value="<?php echo $list['id']; ?>"><?php echo $list['list_name']; ?></option>
+      <?php endforeach; ?>
+    </select>
+  </div>
   <?php endif; ?>
-  <br />
-  <label>Task Body</label>
-  <textarea rows="5" cols="50" name="task_body"></textarea><br />
-  <label>Due Date</label>
-  <input type='date' name='due_date' /><br />
-  <input type="submit" value="Create" name="task_submit" />
+  <div class="mb-3">
+    <label for="task_body" class="form-label">Task Description</label>
+    <textarea name="task_body" class="form-control" id="task_body" rows="5"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="due_date" class="form-label">Due Date</label>
+    <input type="date" name="due_date" class="form-control" id="due_date"
+      value="<?php if($_POST['due_date'])echo $_POST['due_date'] ?>" />
+  </div>
+  <div class="mb-3">
+    <input type="submit" class="btn btn-primary w-100" value="Create Task" name="task_submit" />
+  </div>
 </form>
