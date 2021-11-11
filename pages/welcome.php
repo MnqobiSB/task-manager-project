@@ -1,5 +1,3 @@
-<h1>Welcome to Task Manager</h1>
-
 <?php
   if($_SESSION['logged_in']){
     //Instantiate Database object
@@ -16,18 +14,34 @@
 ?>
 
 <?php if($_SESSION['logged_in']) : ?>
-<h3>Here are your current lists:</h3>
-<?php if($rows) : ?>
-<ul class="items">
+<h2 class="text-center"><em>Here are your current lists:</em></h2>
+<div class="row">
+  <?php if($rows) : ?>
   <?php
-    foreach($rows as $list){
-      echo '<li><a href="?page=list&id='.$list['id'].'">'.$list['list_name'].'</a></li>';
-    }
-  ?>
-</ul>
-<?php endif; ?>
+      foreach($rows as $list){
+        echo '
+          <div class="col-md-6">
+            <a href="?page=list&id='.$list['id'].'">
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-header"><h5 class="card-title mb-0">'.$list['list_name'].'</h5></div>
+                <div class="card-body">
+                  <p class="card-text">
+                  '.$list['list_body'].'
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        ';
+      }
+    ?>
+  <?php endif; ?>
+</div>
 <?php else : ?>
-<h2>This App Helps You Plan Your Daily Tasks</h2>
-<p>Task Manager is a small but helpful application where you can create and manage tasks to make your life easier.
-  Just register and login and you can start adding tasks</p>
+<div class="content text-center">
+  <h2><em>Get things done with Task Manager!</em></h2>
+  <p>Task Manager is a small but helpful application where you can create and manage tasks to make your life easier.
+    Just sign-up and sign-in to get started with your daily task planner.</p>
+  <a href="index.php?page=register" class="btn btn-success" tabindex="-1" role="button">Get Started</a>
+</div>
 <?php endif; ?>

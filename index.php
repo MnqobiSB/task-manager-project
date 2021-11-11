@@ -91,8 +91,37 @@
     </div>
   </nav>
 
+  <!-- Container -->
   <div class="container">
+    <!-- Row -->
     <div class="row">
+      <!-- Page Header -->
+      <?php
+        if($_GET['page'] == 'welcome' || $_GET['page'] == ""){
+          echo '<h1 class="text-center">Welcome to Task Manager</h1>';
+        } elseif($_GET['page'] == 'list'){
+          echo '';
+        } elseif($_GET['page'] == 'login'){
+          echo '';
+        } elseif($_GET['page'] == 'task'){
+          echo '';
+        } elseif($_GET['page'] == 'new_task'){
+          echo '';
+        } elseif($_GET['page'] == 'new_list'){
+          echo '';
+        } elseif($_GET['page'] == 'edit_task'){
+          echo '';
+        } elseif($_GET['page'] == 'edit_list'){
+          echo '';
+        } elseif($_GET['page'] == 'register'){
+          echo '';
+        } elseif($_GET['page'] == 'delete_list'){
+          echo '';
+        }
+      ?>
+      <!-- Page Header -->
+
+      <!-- Page Illustration -->
       <div class="col-md-5">
         <img src="<?php
           if($_GET['page'] == 'welcome' || $_GET['page'] == ""){
@@ -119,7 +148,9 @@
         ?>" class="contact__img" alt="Todo welcome illustration" title="Todo welcome illustration" loading="eager"
           width="400" height="400" />
       </div>
+      <!-- Page Illustration -->
 
+      <!-- Todo App -->
       <div class="col-md-7">
         <?php
           if($_GET['msg'] == 'listdeleted'){
@@ -148,12 +179,14 @@
           }
         ?>
       </div>
-    </div>
+      <!-- Todo App -->
+    </div><!-- Row -->
+  </div><!-- Container -->
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>
