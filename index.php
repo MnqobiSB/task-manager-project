@@ -102,7 +102,7 @@
         } elseif($_GET['page'] == 'list'){
           echo '';
         } elseif($_GET['page'] == 'login'){
-          echo '';
+          echo '<h1 class="text-center">Sign In</h1>';
         } elseif($_GET['page'] == 'task'){
           echo '';
         } elseif($_GET['page'] == 'new_task'){
@@ -129,7 +129,7 @@
           } elseif($_GET['page'] == 'list'){
             echo '';
           } elseif($_GET['page'] == 'login'){
-            echo '';
+            echo 'img/login.svg';
           } elseif($_GET['page'] == 'task'){
             echo '';
           } elseif($_GET['page'] == 'new_task'){

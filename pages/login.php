@@ -25,32 +25,29 @@
   }
 ?>
 
-<div class="card border-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">
-    Sign In
-  </div>
-  <div class="card-body">
-    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-      <?php if(!$_SESSION['logged_in']) : ?>
-      <?php foreach($login_msg as $msg) : ?>
-      <?php echo $msg.'<br />'; ?>
-      <?php endforeach; ?>
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" name="username" class="form-control" id="username">
-      </div>
+<p>Already have an account? Sign In now.</p>
 
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="password">
-      </div>
-
-      <div class="mb-3">
-        <input type="submit" class="btn btn-success" value="Sign In Now" name="login_submit" />
-      </div>
-      <?php else : ?>
-      <h2>Welcome</h2>
-      <?php endif; ?>
-    </form>
+<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+  <?php if(!$_SESSION['logged_in']) : ?>
+  <?php foreach($login_msg as $msg) : ?>
+  <?php echo $msg.'<br />'; ?>
+  <?php endforeach; ?>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" name="username" class="form-control" id="username">
   </div>
-</div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="password">
+  </div>
+
+  <div class="mb-3">
+    <input type="submit" class="btn btn-success w-100" value="Sign In" name="login_submit" />
+  </div>
+  <?php else : ?>
+  <h2>Welcome</h2>
+  <?php endif; ?>
+</form>
+
+<p>Don't have an account yet? <a href="index.php?page=register">Register now</a></p>
