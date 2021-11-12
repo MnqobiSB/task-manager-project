@@ -19,12 +19,19 @@
 	}
 ?>
 
+<p class="lead">Organise your day by adding a category list</p>
 
-<h1>Add a List</h1>
 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-  <label>List Name</label>
-  <input type="text" name="list_name" /><br />
-  <label>List Body</label>
-  <textarea rows="5" cols="50" name="list_body"></textarea><br />
-  <input type="submit" value="Create" name="submit" />
+  <div class="mb-3">
+    <label for="list_name" class="form-label">List Name</label>
+    <input type="text" name="list_name" class="form-control" id="list_name"
+      value="<?php if($_POST['list_name'])echo $_POST['list_name'] ?>" />
+  </div>
+  <div class="mb-3">
+    <label for="list_body" class="form-label">List Description</label>
+    <textarea name="list_body" class="form-control" id="list_body" rows="5"></textarea>
+  </div>
+  <div class="mb-3">
+    <input type="submit" class="btn btn-primary w-100" value="Create List" name="submit" />
+  </div>
 </form>

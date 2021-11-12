@@ -35,7 +35,7 @@
 ?>
 
 
-<p class="lead">Organise your day by adding your tasks</p>
+<p class="lead">Organise your day by adding your tasks under a list</p>
 
 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
   <div class="mb-3">
