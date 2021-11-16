@@ -8,8 +8,7 @@
   $database->bind(':id', $list_id);
   $row = $database->single();
 
-  echo '<h2>'.$row['list_name'].'</h2>';
-  echo '<p>'.$row['list_body'].'</p>';
+  echo '<p class="lead">'.$row['list_body'].'</p>';
   echo '<a href="?page=edit_list&id='.$row['id'].'">Edit List</a> |';
   echo '<a href="?page=delete_list&id='.$row['id'].'">Delete List</a>';
 

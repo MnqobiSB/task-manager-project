@@ -26,6 +26,19 @@
   }
 ?>
 
+<?php
+  if($_GET['page'] == 'list'){
+    $list_id = $_GET['id'];
+
+    //Instantiate Database object
+    $database = new Database;
+    //Query
+    $database->query('SELECT * FROM lists WHERE id = :id');
+    $database->bind(':id', $list_id);
+    $row = $database->single();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,6 +96,7 @@
         <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
           <input type="submit" class="btn btn-danger" value="Sign Out" name="logout_submit" />
         </form>
+        <!-- Signout Form -->
         <?php else : ?>
         <a href="index.php?page=register" class="btn btn-warning me-2" tabindex="-1" role="button">Register</a>
         <a href="index.php?page=login" class="btn btn-primary" tabindex="-1" role="button">Sign In</a>
@@ -100,7 +114,7 @@
         if($_GET['page'] == 'welcome' || $_GET['page'] == ""){
           echo '<h1 class="text-center">Welcome to Task Manager</h1>';
         } elseif($_GET['page'] == 'list'){
-          echo '';
+          echo '<h1 class="text-center">'.$row['list_name'].'</h1>';
         } elseif($_GET['page'] == 'login'){
           echo '<h1 class="text-center">Sign In</h1>';
         } elseif($_GET['page'] == 'task'){
@@ -127,7 +141,7 @@
           if($_GET['page'] == 'welcome' || $_GET['page'] == ""){
             echo 'img/welcome.svg';
           } elseif($_GET['page'] == 'list'){
-            echo '';
+            echo 'img/to_do.svg';
           } elseif($_GET['page'] == 'login'){
             echo 'img/login.svg';
           } elseif($_GET['page'] == 'task'){
