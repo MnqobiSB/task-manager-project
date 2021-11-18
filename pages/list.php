@@ -9,8 +9,6 @@
   $row = $database->single();
 
   echo '<p class="lead">'.$row['list_body'].'</p>';
-  echo '<a href="?page=edit_list&id='.$row['id'].'">Edit List</a> |';
-  echo '<a href="?page=delete_list&id='.$row['id'].'">Delete List</a>';
 
   //Instantiate Database object
   $database = new Database;
@@ -20,14 +18,25 @@
   $database->bind(':is_complete',0);
   $rows = $database->resultset();
 
-  echo '<h3>Tasks</h3>';
+  echo '<h2>My Tasks</h2>';
+  echo '<button onclick="history.go(-1);" class="btn btn-secondary mb-2" tabindex="-1" role="button">Go Back</button>';
   if($rows){
-    echo '<ul class="items">';
+    // Task List
+    echo '<ul class="list-group mb-3">';
     foreach($rows as $task){
-      echo '<li><a href="?page=task&id='.$task['id'].'">'.$task['task_name'].'</a></li>';
+      echo '<li class="list-group-item d-flex justify-content-between align-items-center">
+              <a href="?page=task&id='.$task['id'].'">'.$task['task_name'].'</a>
+              <span class="badge bg-primary rounded-pill">Due: '.$task['due_date'].'</span>
+            </li>
+          ';
     }
     echo '</ul>';
+
+    // Edit & Delete Buttons
+    echo '<a href="?page=edit_list&id='.$row['id'].'" class="btn btn-warning me-2" tabindex="-1" role="button">Edit List</a>';
+    echo '<a href="?page=delete_list&id='.$row['id'].'" class="btn btn-danger" tabindex="-1" role="button">Delete List</a>';
   } else {
+    // No Tasks - Create One
     echo 'No tasks for this list - <a href="index.php?page=new_task&listid='.$_GET['id'].'">Create One Now</a>';
   }
 ?>
