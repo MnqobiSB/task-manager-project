@@ -153,7 +153,7 @@
           } elseif($_GET['page'] == 'edit_task'){
             echo '';
           } elseif($_GET['page'] == 'edit_list'){
-            echo '';
+            echo 'img/add_tasks.svg';
           } elseif($_GET['page'] == 'register'){
             echo 'img/login.svg';
           } elseif($_GET['page'] == 'delete_list'){

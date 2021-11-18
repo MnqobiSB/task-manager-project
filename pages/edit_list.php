@@ -31,12 +31,18 @@
   $row = $database->single();
 ?>
 
-<h1>Edit List</h1>
-<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-  <label>List Name</label><br />
-  <input type="text" name="list_name" value="<?php echo $row['list_name']; ?>" /><br />
+<p class="lead">Edit your <?php echo $row['list_name']; ?> list</p>
 
-  <label>List Body</label><br />
-  <textarea rows="5" cols="50" name="list_body"><?php echo $row['list_body']; ?></textarea><br />
-  <input type="submit" value="Update" name="submit" />
+<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
+  <div class="mb-3">
+    <label for="list_name" class="form-label">List Name</label>
+    <input type="text" name="list_name" class="form-control" id="list_name" value="<?php echo $row['list_name']; ?>" />
+  </div>
+  <div class="mb-3">
+    <label for="list_body" class="form-label">List Description</label>
+    <textarea name="list_body" class="form-control" id="list_body" rows="5"><?php echo $row['list_body']; ?></textarea>
+  </div>
+  <div class="mb-3">
+    <input type="submit" class="btn btn-primary w-100" value="Update List" name="submit" />
+  </div>
 </form>
