@@ -24,11 +24,12 @@
     // Task List
     echo '<ul class="list-group mb-3">';
     foreach($rows as $task){
-      echo '<li class="list-group-item d-flex justify-content-between align-items-center">
-              <a href="?page=task&id='.$task['id'].'">'.$task['task_name'].'</a>
-              <span class="badge bg-primary rounded-pill">Due: '.$task['due_date'].'</span>
-            </li>
-          ';
+      echo '
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="?page=task&id='.$task['id'].'">'.$task['task_name'].'</a>
+          <span class="badge bg-primary rounded-pill">Due: '.$task['due_date'].'</span>
+        </li>
+      ';
     }
     echo '</ul>';
 

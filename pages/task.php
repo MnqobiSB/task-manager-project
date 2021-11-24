@@ -9,6 +9,8 @@
   $row = $database->single();
 ?>
 
+<button onclick="history.go(-1);" class="btn btn-secondary" tabindex="-1" role="button">Go Back</button>
+
 <table class="table">
   <thead>
     <tr>
@@ -30,7 +32,7 @@
       <td><?php echo $row['due_date']; ?></td>
     </tr>
     <tr>
-      <th scope="row">Task Name:</th>
+      <th scope="row">Status:</th>
       <td>
         <?php if($row['is_complete'] == 1){
             echo '<strong>Complete</strong>';
@@ -43,4 +45,5 @@
   </tbody>
 </table>
 
-<a href="?page=edit_task&id=<?php echo $row['id']; ?>">Edit Task</a>
+<a href="?page=edit_task&id=<?php echo $row['id']; ?>" class="btn btn-warning me-2" tabindex="-1" role="button">Edit
+  Task</a>
